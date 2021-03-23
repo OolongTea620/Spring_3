@@ -12,6 +12,6 @@ public class MemberDAO {
 	public void memberJoin() {
 		//1. 로그인 정보
 		String user = "user01";
-		
+		//2.javaDrive 검색
 	}
 }
