@@ -1,5 +1,12 @@
 package com.iu.s3.member;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import com.iu.s3.bankbook.BankBookDTO;
+
 public class MemberDAO {
 	
 	public void menberSelect()throws Exception{
@@ -12,9 +19,38 @@ public class MemberDAO {
 	}
 	
 	//memberJoin 데이터를 바다엇 DB에 insert하는 메소드
-	public void memberJoin() {
-		//1. 로그인 정보
-		String user = "user01";
-		//2.javaDrive 검색
+	public void memberJoin(MemberDTO memberDTO)throws Exception {
+		
+		//1.oracleDB 접속하기
+		String user="user01";
+		String password="user01";
+		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+		String driver = "oracle.jdbc.driver.OracleDriver";
+
+		//2. 클래스 로딩
+		Class.forName(driver);
+
+		//3. 로그인 Connection
+		Connection con = DriverManager.getConnection(url, user, password);
+
+		String sql ="select * from bankbook";
+
+		PreparedStatement st = con.prepareStatement(sql);
+
+		ResultSet rs = st.executeQuery();
+		System.out.println("executeQuery----------");
+		while(rs.next()) {
+			System.out.println("count");
+			BankBookDTO bankBookDTO = new BankBookDTO();
+			bankBookDTO.setBookNumber(rs.getLong("bookNumber"));
+			bankBookDTO.setBookName(rs.getString("bookName"));
+			bankBookDTO.setBookRate(rs.getDouble("bookRate"));
+			bankBookDTO.setBookSale(rs.getString("bookSale"));
+		}
+
+		rs.close();
+		st.close();
+		con.close();
+
 	}
 }
