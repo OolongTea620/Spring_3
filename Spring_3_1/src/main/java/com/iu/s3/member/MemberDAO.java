@@ -5,26 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-<<<<<<< Updated upstream
-import com.iu.s3.member.MemberDTO;
-
-public class MemberDAO {
-	
-	public void menberSelect()throws Exception{
-		//조회 아무거나
-	}
-	
-	public void memberUpdate()throws Exception {
-		//id룰 제외하고 나머지 수정
-		
-	}
-	
-	public int memberUpdate(MemberDTO memberDTO)throws Exception{
-		//id를 제외하고 나머지 수정
-	}
-	
-	public int memberDelete(MemberDTO memberDTO)throws Exception{
-=======
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -57,7 +37,6 @@ public class MemberDAO {
 	}	
 	
 	public int setWrite(MemberDTO memberDTO)throws Exception{
->>>>>>> Stashed changes
 		
 		//실행해야하는sql문의 위치를 알려준다.
 		int result = sqlSession.insert(NAMESPACE+".setWrite",memberDTO);
