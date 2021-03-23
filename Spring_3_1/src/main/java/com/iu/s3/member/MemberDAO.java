@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+<<<<<<< Updated upstream
 import com.iu.s3.member.MemberDTO;
 
 public class MemberDAO {
@@ -23,7 +24,45 @@ public class MemberDAO {
 	}
 	
 	public int memberDelete(MemberDTO memberDTO)throws Exception{
+=======
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+
+@Repository
+public class MemberDAO {
+	
+	@Autowired 
+	private SqlSession sqlSession; //조회 XMl문서 관련
+	
+	//패키지와그 클래스 명을 가리키기 위한 상수(고정) 문자열.
+	private final String NAMESPACE = "com.iu.s3.member.MemberDAO"; 
+	
+	
+	public int setUpdate(MemberDTO memberDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+".setUpdate",memberDTO);
+	}
+	
+	public int setDelete(MemberDTO memberDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+".setUpdate",memberDTO);
+	}
+	
+	public MemberDTO getSelect(MemberDTO memberDTO)throws Exception{
+		long num = 1L;
+		sqlSession.selectOne(NAMESPACE+".getSelect", num);
+		//없으면 자동으로 0이 들어간다.
 		
+		return memberDTO;
+	}	
+	
+	public int setWrite(MemberDTO memberDTO)throws Exception{
+>>>>>>> Stashed changes
+		
+		//실행해야하는sql문의 위치를 알려준다.
+		int result = sqlSession.insert(NAMESPACE+".setWrite",memberDTO);
+		return result;
+
 	}
 	
 	//memberJoin 데이터를 받아서 DB에 insert 하는 메서드
