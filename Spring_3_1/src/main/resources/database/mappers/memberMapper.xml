@@ -6,7 +6,7 @@
 <mapper namespace="com.iu.s3.member.MemberDAO">
 	
 	<update id="setUpate" parameterType="com.iu.s3.member.MemberDTO">
-		//여기 반드시 체워 놓을 것
+		update member values{#{name},#{email},#{phone}}
 	</update>
 	<insert id="setWrite" parameterType="com.iu.s3.member.MemberDTO">
 		insert into member values(#{name},#{email},#{phone})

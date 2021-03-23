@@ -24,7 +24,7 @@ public class ConnectionTest extends MyAbstractTest{
 		//primitive type,String
 		//asserEquals(0,0);
 		
-		//reference Type
+		//reference type
 		assertNotNull(sqlSession);
 		
 	
