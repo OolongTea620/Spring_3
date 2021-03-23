@@ -41,11 +41,12 @@ public class MemberDAO {
 		System.out.println("executeQuery----------");
 		while(rs.next()) {
 			System.out.println("count");
-			BankBookDTO bankBookDTO = new BankBookDTO();
-			bankBookDTO.setBookNumber(rs.getLong("bookNumber"));
-			bankBookDTO.setBookName(rs.getString("bookName"));
-			bankBookDTO.setBookRate(rs.getDouble("bookRate"));
-			bankBookDTO.setBookSale(rs.getString("bookSale"));
+			MemberDTO memberDTO1 = new MemberDTO();
+			memberDTO1.setId(rs.getString("memberID"));
+			memberDTO1.setPw(rs.getString("memberPw"));
+			memberDTO1.setName(rs.getString("memberName"));
+			memberDTO1.setPhone(rs.getString("memberPhone"));
+			memberDTO1.setEmail(rs.getString("memberEmail"));
 		}
 
 		rs.close();
