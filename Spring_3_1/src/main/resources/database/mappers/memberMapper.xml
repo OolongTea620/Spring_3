@@ -13,15 +13,15 @@
 	</insert>
 	
 	<select id="getSelect" parameterType="java.lang.Long" resultType="com.iu.s3.member.MemberDTO">
-		select *from member where bookNumber =#{num}
+		select *from member where =#{num}
 		<!-- 최종 담을 곳 -->
 	</select>
 	
 	<select id="getList" resultType="java.util.List">
-		select *from member order by bookNumber desc
+		select *from member order by name desc
 	</select>
 	
 	<delete id="setDelete" parameterType="com.iu.s3.member.MemberDTO">
-		delete member where memberId = #{name}
+		delete member where Id = #{name}
 	</delete>
 </mapper>
